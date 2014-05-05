@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block extra_styles %}
+{% endblock %}
+{% block content %}
+<div class="clearfix">
+  <div class="btn-group">
+    <a href="{% url 'provider-create' %}" class="btn green">
+      <i class="icon-plus"></i> Create
+    </a>
+  </div>
+</div>
+<br/>
+<div class="portlet-body" style="display: block;">
+  <table class="table table-striped table-bordered table-advance table-hover">
+    <thead>
+      <tr>
+        <th><i class="icon-cogs"></i> Provider Name</th>
+        <th class="hidden-phone"><i class="icon-question-sign"></i> Descrition</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for provider in provider_list %}
+      <tr>
+        <td><a href="{% url 'provider-update' provider.id %}">{{provider.name}}</a></td>
+        <td class="hidden-phone">{{provider.description}}‎</td>
+        <td>
+          <a class="btn mini green-stripe" href="{% url 'provider-update' provider.id %}">Edit</a>
+          <a class="btn mini red-stripe" href="{% url 'provider-delete' provider.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+{% block extra_plugins %}
+{% endblock %}
+{% block extra_scripts %}
+{% endblock %}
+{% block extra_init %}
+{% endblock %}
